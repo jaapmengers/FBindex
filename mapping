@@ -1,13 +1,9 @@
-{
-   "links": {
-      "mappings": {
+"mappings": {
+   "link": {
+      "properties": {
          "link": {
-            "properties": {
-               "link": {
-                  "type": "string",
-                  "analyzer": "simple"
-               }
-            }
+            "type": "string",
+            "analyzer": "simple"
          }
       }
    }

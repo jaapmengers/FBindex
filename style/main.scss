@@ -1,0 +1,12 @@
+@import "../bower_components/materialize/sass/materialize.scss";
+
+iframe {
+  border: 0px;
+}
+
+.row>.col.video {
+  margin-bottom: -35px;
+  margin-top: -16px;
+  margin-left: -2.5px;
+  padding-left: 0px;
+}

@@ -1,0 +1,20 @@
+{
+  "name": "FBindex",
+  "version": "0.0.0",
+  "homepage": "https://github.com/jaapmengers/FBindex",
+  "authors": [
+    "Jaap Mengers <jaapm@q42.nl>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "~0.93.1",
+    "react": "~0.12.2"
+  }
+}

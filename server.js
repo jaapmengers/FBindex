@@ -1,12 +1,7 @@
-var express = require('express'),
-	http = require('http'),
-  us = require('underscore');
+var connect = require('connect');
+var serveStatic = require('serve-static');
 
-var app = module.exports = express();
-var server = http.createServer(app);
+var app = connect();
 
-app.use(express.static(path.join(__dirname, 'public')));
-
-var port = process.env.PORT || 5000;
-
-server.listen(port);
+app.use(serveStatic('public', {'index': ['index.html']}));
+app.listen(3000);

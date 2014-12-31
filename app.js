@@ -22,6 +22,7 @@ var getPosts = function(url){
 			console.log('Got response: ', response.data.length);			
 
 			us.each(response.data, function(it){
+				console.log(it);
 				save(it);
 			})
 
@@ -40,7 +41,7 @@ var save = function(it){
 
 	var options = {
 	  host: 'localhost',
-	  port: 9205,
+	  port: 9200,
 	  path: '/links/link/' + it.id,
 	  method: 'PUT'
 	};
@@ -57,7 +58,7 @@ var save = function(it){
 	});
 
 	// write data to request body
-	req.write(JSON.stringify({'link': it.link, 'name': it.name, 'description': it.description, 'created_time': it.created_time, 'message': it.message}));
+	req.write(JSON.stringify({'link': it.link, 'name': it.name, 'description': it.description, 'picture': it.picture,  'created_time': it.created_time, 'message': it.message}));
 	req.end();
 }
 
