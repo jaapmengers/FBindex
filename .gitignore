@@ -27,3 +27,9 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 access_token.js
+.idea/
+.sass-cache/
+FBindex.iml
+bower_components/
+public/
+tmp/
