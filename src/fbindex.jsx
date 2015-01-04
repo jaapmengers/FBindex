@@ -73,7 +73,7 @@ var SearchComponent = React.createClass({
     };
 
     $.ajax({
-      url :'http://localhost:9200/links/link/_search?source=' + JSON.stringify(query),
+      url :'http://' + window.server + ':' + window.port + '/links/link/_search?source=' + JSON.stringify(query),
       success: function(res){
         var videos = res.hits.hits.map(function (hit) {
           console.log(hit);

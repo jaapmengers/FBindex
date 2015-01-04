@@ -3,10 +3,6 @@ FBindex
 
 This project uses the Facebook Graph API to download all the posts you ever made on your Facebook wall and indexes them in Elasticsearch for searchability.
 
-To use, add an access_token.js file to the root of the project that contains an access token that you can generate at https://developers.facebook.com/tools/explorer/
+Run elasticsearch as follows: ```> docker run -d -P --name es jaapme/elasticsearch-cors```
 
-It should look like this:
-
-```
-exports.access_token = '[yourtoken]';
-```
+To use, generate an access token at https://developers.facebook.com/tools/explorer/ and provide it when starting the web container like so: ```> docker run -d -P -e "access_token=[access_token]" --link es:es --name web jaapme/fbindex```

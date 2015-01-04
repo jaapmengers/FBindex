@@ -10,10 +10,6 @@ module.exports = function(grunt) {
       scripts : {
         files: ['src/**'],
         tasks: ['react', 'concat']
-      },
-      html : {
-        files: ['index.html'],
-        tasks: ['copy']
       }
     },
     react: {
@@ -40,7 +36,6 @@ module.exports = function(grunt) {
         files: [
           { expand: true, cwd: 'bower_components/materialize/dist',  src: ['js/*', 'font/**'], dest: 'public/' },
           { expand: true, cwd: 'bower_components/react/', src: ['react.*', 'JSXTransformer.js'], dest: 'public/js/' },
-          { expand: true, src: ['index.html'], dest: 'public/' }
         ]
       }
     }

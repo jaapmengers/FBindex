@@ -4,10 +4,9 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "connect": "^3.3.3",
     "express": "3.4.7",
     "grunt-contrib-concat": "^0.5.0",
-    "serve-static": "^1.7.1",
+    "jade": "^1.8.2",
     "underscore": "^1.7.0"
   },
   "devDependencies": {

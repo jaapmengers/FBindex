@@ -1,0 +1,30 @@
+html
+  head
+    // Import materialize.css
+    link(type='text/css', rel='stylesheet', href='css/main.css', media='screen,projection')
+    |   
+    title FBIndex
+    style(type='text/css').
+  |   
+  body
+    #search
+      div(data-reactid='.0')
+        .section.materialize-red.lighten-2(data-reactid='.0.0')
+          .container(data-reactid='.0.0.0')
+            input(type='text', data-reactid='.0.0.0.0')
+        .section(data-reactid='.0.1')
+          .container(data-reactid='.0.1.0')
+    |     
+    script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
+    |     
+    script(type='text/javascript', src='js/materialize.min.js')
+    |     
+    script(type='text/javascript', src='js/react.js')
+    |     
+    script(type='text/javascript', src='js/fbindex.js')
+    |   
+    script(type='text/javascript').
+      window.server = '#{server}';
+      window.port = #{port};
+    |  
+    .hiddendiv.common

@@ -3,7 +3,31 @@ var http = require('http'),
   us = require('underscore');
   at = require('./access_token.js');
 
-var url = 'https://graph.facebook.com/me/links?method=GET&format=json&suppress_http_code=1&access_token=' + at.access_token;
+var access_token = process.env.access_token;
+var url = 'https://graph.facebook.com/me/links?method=GET&format=json&suppress_http_code=1&access_token=' + access_token;
+
+var setMapping = function(){
+	var options = {
+		host: process.env.ES_PORT_9200_TCP_ADDR,
+		port: process.env.ES_PORT_9200_TCP_PORT,
+	  path: '/links',
+	  method: 'POST'
+	};
+
+	var req = http.request(options, function(res) {
+	  res.setEncoding('utf8');
+	  res.on('data', function (chunk) {
+	    console.log('Mapping set');
+	  });
+	});
+
+	req.on('error', function(e) {
+	  console.log('problem with request: ' + e.message);
+	});
+
+	req.write(JSON.stringify({ "mappings": { "link": { "properties": { "link": { "type": "string", "analyzer": "simple" } } } } }));
+	req.end();
+}
 
 var getPosts = function(url){
 
@@ -18,11 +42,8 @@ var getPosts = function(url){
 
 		res.on('end', function(){
 			var response = JSON.parse(body);
-			console.log(response);
-			console.log('Got response: ', response.data.length);			
 
 			us.each(response.data, function(it){
-				console.log(it);
 				save(it);
 			})
 
@@ -40,8 +61,8 @@ var getPosts = function(url){
 var save = function(it){
 
 	var options = {
-	  host: 'localhost',
-	  port: 9200,
+		host: process.env.ES_PORT_9200_TCP_ADDR,
+		port: process.env.ES_PORT_9200_TCP_PORT,
 	  path: '/links/link/' + it.id,
 	  method: 'PUT'
 	};
@@ -62,4 +83,5 @@ var save = function(it){
 	req.end();
 }
 
+setMapping();
 getPosts(url);
