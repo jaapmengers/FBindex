@@ -53,30 +53,11 @@ var SearchResults = React.createClass({
 
 var SearchComponent = React.createClass({
   doSearchQuery: function(queryString){
-    var query = {
-      "query": {
-        "filtered": {
-          "query": {
-            "query_string": {
-              "query": queryString
-            }
-          },
-          "filter": {
-            "query": {
-              "match": {
-                "link": "youtube"
-              }
-            }
-          }
-        }
-      }
-    };
-
     $.ajax({
-      url :'http://' + window.server + ':' + window.port + '/links/link/_search?source=' + JSON.stringify(query),
+      url :'/search?q=' + queryString,
       success: function(res){
-        var videos = res.hits.hits.map(function (hit) {
-          console.log(hit);
+
+        var videos = res.hits.map(function (hit) {
           return {id: hit._id, title: hit._source.name, description: hit._source.description, picture: hit._source.picture, youtubeID: getVideoIdFromUrl(hit._source.link)};
         }).filter(function(it){
           return it.youtubeID !== undefined;
