@@ -1,6 +1,5 @@
 var http = require('http'),
-  https = require('https'),
-  us = require('underscore');
+  https = require('https');
 
 var access_token = process.env.access_token;
 var url = 'https://graph.facebook.com/me/links?method=GET&format=json&suppress_http_code=1&access_token=' + access_token;
@@ -42,7 +41,7 @@ var getPosts = function(url){
 		res.on('end', function(){
 			var response = JSON.parse(body);
 
-			us.each(response.data, function(it){
+			response.data.forEach(function(it){
 				save(it);
 			});
 

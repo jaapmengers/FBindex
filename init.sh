@@ -1,3 +1,2 @@
 cd /src
-node app.js
-node server.js
+node app.js && nodemon
