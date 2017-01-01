@@ -9,7 +9,7 @@ Run Docker build in the root of the project. I.e. ```docker build -t fbindex .``
 
 Running
 -------------
-Run elasticsearch as follows: ```docker run -d -P --name es dockerfile/elasticsearch```
+Run elasticsearch as follows: ```docker run -d -p 9200:9200 -p 9300:9300 --name es dockerfile/elasticsearch```
 
 To use, generate an access token at https://developers.facebook.com/tools/explorer/ and provide it when starting the web container like so: ```docker run -d -P -e "access_token=[access_token]" --link es:es --name web fbindex```. Tail the logs to monitor the progress of the indexing process: ```docker logs -f web```
 
